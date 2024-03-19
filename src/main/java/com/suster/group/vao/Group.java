@@ -1,5 +1,6 @@
 package com.suster.group.vao;
 
+import com.suster.GroupProto;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -29,4 +30,11 @@ public class Group extends PanacheEntityBase {
     private UserId adminId;
 
     private Long timetableId;
+
+    public GroupProto toProto() {
+        return GroupProto.newBuilder()
+                .setId(this.id)
+                .setName(this.name)
+                .set
+    }
 }

@@ -2,11 +2,10 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "com.suster";
-option java_outer_classname = "GroupServiceProto";
 
 package group;
 
-service GroupService {
+service GroupServiceProto {
   rpc FindAll (FindAllRequest) returns (FindAllResponse) {};
 //  rpc FindById (FindByIdRequest) returns (FindByIdResponse);
   rpc CreateGroup (CreateGroupRequest) returns (CreateGroupResponse) {};
@@ -20,7 +19,7 @@ service GroupService {
 message FindAllRequest {}
 
 message FindAllResponse {
-  repeated Group group = 1;
+  repeated GroupProto group = 1;
 }
 
 //message FindByIdRequest {
@@ -42,7 +41,7 @@ message CreateGroupRequest {
 
 message CreateGroupResponse {
   // Add any necessary fields for the CreateGroup response
-  Group group = 1;
+  GroupProto group = 1;
 }
 
 //message UpdateGroupRequest {
@@ -102,16 +101,15 @@ message CreateGroupResponse {
 //}
 //
 //// Define the UserId message
-//message UserId {
-//  // Add any necessary fields for the UserId message
-//  int64 id = 1;
-//}
-// Define the Group message
+message UserId {
+  // Add any necessary fields for the UserId message
+  int64 id = 1;
+}
 
-message Group {
+message GroupProto {
   // Add any necessary fields for the Group message
   int64 id = 1;
   string name = 2;
-//  repeated UserId user_ids = 3;
+  repeated UserId user_ids = 3;
   int64 timetable_id = 4;
 }
