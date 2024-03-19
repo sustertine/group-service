@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.suster";
+option java_outer_classname = "GroupServiceProto";
+
+package group;
+
+service GroupService {
+  rpc FindAll (FindAllRequest) returns (FindAllResponse) {};
+//  rpc FindById (FindByIdRequest) returns (FindByIdResponse);
+  rpc CreateGroup (CreateGroupRequest) returns (CreateGroupResponse) {};
+//  rpc UpdateGroup (UpdateGroupRequest) returns (UpdateGroupResponse);
+//  rpc DeleteGroup (DeleteGroupRequest) returns (DeleteGroupResponse);
+//  rpc AddUser (AddUserRequest) returns (AddUserResponse);
+//  rpc AddUsers (AddUsersRequest) returns (AddUsersResponse);
+//  rpc RemoveUser (RemoveUserRequest) returns (RemoveUserResponse);
+}
+
+message FindAllRequest {}
+
+message FindAllResponse {
+  repeated Group group = 1;
+}
+
+//message FindByIdRequest {
+//  // Add any necessary fields for the FindById request
+//  string group_id = 1;
+//}
+//
+//message FindByIdResponse {
+//  // Add any necessary fields for the FindById response
+//  Group group = 1;
+//}
+
+message CreateGroupRequest {
+  // Add any necessary fields for the CreateGroup request
+  string name = 1;
+//  repeated UserId user_ids = 2;
+  string timetable_id = 3;
+}
+
+message CreateGroupResponse {
+  // Add any necessary fields for the CreateGroup response
+  Group group = 1;
+}
+
+//message UpdateGroupRequest {
+//  // Add any necessary fields for the UpdateGroup request
+//  string group_id = 1;
+//  string name = 2;
+//  repeated UserId user_ids = 3;
+//  string timetable_id = 4;
+//}
+//
+//message UpdateGroupResponse {
+//  // Add any necessary fields for the UpdateGroup response
+//  Group group = 1;
+//}
+//
+//message DeleteGroupRequest {
+//  // Add any necessary fields for the DeleteGroup request
+//  string group_id = 1;
+//}
+//
+//message DeleteGroupResponse {
+//  // Add any necessary fields for the DeleteGroup response
+//  string message = 1;
+//}
+//
+//message AddUserRequest {
+//  // Add any necessary fields for the AddUser request
+//  string group_id = 1;
+//  UserId user_id = 2;
+//}
+//
+//message AddUserResponse {
+//  // Add any necessary fields for the AddUser response
+//  Group group = 1;
+//}
+//
+//message AddUsersRequest {
+//  // Add any necessary fields for the AddUsers request
+//  string group_id = 1;
+//  repeated UserId user_ids = 2;
+//}
+//
+//message AddUsersResponse {
+//  // Add any necessary fields for the AddUsers response
+//  Group group = 1;
+//}
+//
+//message RemoveUserRequest {
+//  // Add any necessary fields for the RemoveUser request
+//  string group_id = 1;
+//  UserId user_id = 2;
+//}
+//
+//message RemoveUserResponse {
+//  // Add any necessary fields for the RemoveUser response
+//  Group group = 1;
+//}
+//
+//// Define the UserId message
+//message UserId {
+//  // Add any necessary fields for the UserId message
+//  int64 id = 1;
+//}
+// Define the Group message
+
+message Group {
+  // Add any necessary fields for the Group message
+  int64 id = 1;
+  string name = 2;
+//  repeated UserId user_ids = 3;
+  int64 timetable_id = 4;
+}
