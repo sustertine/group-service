@@ -1,11 +1,11 @@
 package com.suster.group.service;
 
-
 import com.suster.CreateGroupRequest;
 import com.suster.group.dao.GroupRepository;
 import com.suster.group.dao.UserIdRepository;
 import com.suster.group.vao.Group;
 import com.suster.group.vao.UserId;
+import io.smallrye.common.annotation.Blocking;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;

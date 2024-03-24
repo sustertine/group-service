@@ -9,19 +9,19 @@ import lombok.Data;
 import java.util.List;
 @Data
 @Entity
-@Table(name = "group")
+@Table(name = "groups")
 public class Group extends PanacheEntityBase {
     @Id
-    @SequenceGenerator(name = "group_id_seq", sequenceName = "group_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "group_id_seq")
+    @SequenceGenerator(name = "groups_id_seq", sequenceName = "groups_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groups_id_seq")
     private Long id;
 
     private String name;
 
     @ManyToMany
     @JoinTable(
-            name = "group_user",
-            joinColumns = @JoinColumn(name = "group_id"),
+            name = "groups_user",
+            joinColumns = @JoinColumn(name = "groups_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private List<UserId> userIds;
