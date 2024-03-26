@@ -1,17 +1,19 @@
 package com.suster.group.service;
 
 import com.suster.CreateGroupRequest;
+import com.suster.GroupProto;
 import com.suster.group.dao.GroupRepository;
 import com.suster.group.dao.UserIdRepository;
 import com.suster.group.vao.Group;
 import com.suster.group.vao.UserId;
-import io.smallrye.common.annotation.Blocking;
+import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class GroupServiceImpl {
@@ -21,8 +23,12 @@ public class GroupServiceImpl {
     @Inject
     UserIdRepository userIdRepository;
 
-    public List<Group> findAll() {
-        return groupRepository.listAll();
+    @Transactional
+    public Uni<List<GroupProto>> findAll() {
+        return Uni.createFrom().item(groupRepository.listAll())
+                .onItem().transform(groups -> {
+                    return groups.stream().map(Group::toProto).collect(Collectors.toList());
+                });
     }
 
     @Transactional
